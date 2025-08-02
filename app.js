@@ -47,6 +47,7 @@ function putValue(e) {
   }
 
   const winnerCombo = checkWin();
+  console.log(winnerCombo);
   if (winnerCombo) {
     const lastSymbol = chosenContainer.textContent;
     currentPlayerDisplay.textContent = `Player ${lastSymbol === 'X' ? 1 : 2} wins!`;
@@ -55,7 +56,7 @@ function putValue(e) {
   }
 
   if (boardFull()) {
-    currentPlayerDisplay.textContent = "No one wins, cleaning the board in 3s";
+    currentPlayerDisplay.textContent = "No one won, cleaning the board in 3s";
     endGameCleanup();
   }
 }

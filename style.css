@@ -1,109 +1,135 @@
+:root {
+  --board-size: 50vmin;
+  --choice-size: 120px;
+  --radius: 10px;
+  --border: 1px solid rgba(255,255,255,0.9);
+  --transition: 0.3s;
+  --font: 'Poppins', system-ui, sans-serif;
+}
+
 * {
-    margin: 0px;
-    padding: 0px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
   min-height: 100vh;
-  background-color: black;
+  background-color: #000;
   background-image: url('src/images/graphy-dark.png');
   background-repeat: repeat;
-  background-size: auto; /* or something like 200px 200px if you want scaling */
+  background-size: auto;
   display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  font-family: var(--font);
+  color: white;
+}
+
+.choose-text {
+  color: transparent;
+  -webkit-text-stroke: 1px white;
+  font-family: var(--font);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  user-select: none;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.choice-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
 }
+
 .choices {
-  height: 150px;
-  width: 150px;
-  border: solid white 1px;
-  border-radius: 10px;
+  flex: 0 0 auto;
+  height: var(--choice-size);
+  width: var(--choice-size);
+  border: var(--border);
+  border-radius: var(--radius);
   backdrop-filter: blur(3px);
   color: white;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 7rem;
-  font-family: 'poppins';
-  transition: 0.5s;
+  font-size: 5rem;
+  transition: var(--transition);
   user-select: none;
+  position: relative;
 }
+
 .choices:hover {
   color: black;
   -webkit-text-stroke: 1px white;
   backdrop-filter: blur(0px);
   cursor: pointer;
 }
+
 .choices:active {
   backdrop-filter: blur(5px);
-  scale: 0.9;
+  transform: scale(0.92);
 }
+
 #choice1:hover {
-  border: solid red 1px;
+  border-color: red;
 }
-#choice2 {
-  margin-left: 50px;
-}
+
 #choice2:hover {
-  border: solid blue 1px;
+  border-color: blue;
 }
-.choice-container {
-  height: 150px;
-  width: 350px;
-  display: none;
-  justify-content: center;
-  align-items: center;
-}
-.choose-text {
-  color: black;
-  -webkit-text-stroke: 1px white;
-  font-family: 'poppins';
-  margin-bottom: 150px;
-  font-size: 3rem;
-  user-select: none;
-  display: none;
-}
+
 .grid-table {
-  height: 600px;
-  width: 600px;
-  display: grid;
+  display: none;
+  width: var(--board-size);
+  max-width: 100%;
+  aspect-ratio: 1 / 1;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+  background: rgba(255,255,255,0.02);
+  border-radius: 12px;
+  overflow: hidden;
 }
-.top, .mid, .bot {
-  height: 200px;
-  width: 200px;
+
+.cell {
+  position: relative;
   display: flex;
-  justify-content: center;
   align-items: center;
-  border: solid 1px white;
+  justify-content: center;
+  border: 1px solid white;
+  user-select: none;
+  font-size: clamp(2rem, 10vmin, 8rem);
 }
-#top1 {
-  border-left: 0px;
-  border-top: 0px;
+
+/* border cleanup */
+#top1 { border-left: 0; border-top: 0; }
+#top2 { border-top: 0; }
+#top3 { border-top: 0; border-right: 0; }
+#mid1 { border-left: 0; }
+#mid3 { border-right: 0; }
+#bot1 { border-left: 0; border-bottom: 0; }
+#bot2 { border-bottom: 0; }
+#bot3 { border-right: 0; border-bottom: 0; }
+
+@media (max-width: 700px) {
+  .choices {
+    height: 100px;
+    width: 100px;
+    font-size: 4rem;
+  }
+  .choose-text {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-bottom: 1rem;
+  }
 }
-#top2 {
-  border-top: 0px;
-}
-#top3 {
-  border-right: 0px;
-  border-top: 0px;
-}
-#mid1 {
-  border-left: 0px;
-}
-#mid3 {
-  border-right: 0px;
-}
-#bot1 {
-  border-left: 0px;
-  border-bottom: 0px;
-}
-#bot2 {
-  border-bottom: 0px;
-}
-#bot3 {
-  border-right: 0px;
-  border-bottom: 0px;
+
+#statusMessage {
+  margin-bottom: 130px;
 }

@@ -1,0 +1,109 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+  min-height: 100vh;
+  background-color: black;
+  background-image: url('src/images/graphy-dark.png');
+  background-repeat: repeat;
+  background-size: auto; /* or something like 200px 200px if you want scaling */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.choices {
+  height: 150px;
+  width: 150px;
+  border: solid white 1px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 7rem;
+  font-family: 'poppins';
+  transition: 0.5s;
+  user-select: none;
+}
+.choices:hover {
+  color: black;
+  -webkit-text-stroke: 1px white;
+  backdrop-filter: blur(0px);
+  cursor: pointer;
+}
+.choices:active {
+  backdrop-filter: blur(5px);
+  scale: 0.9;
+}
+#choice1:hover {
+  border: solid red 1px;
+}
+#choice2 {
+  margin-left: 50px;
+}
+#choice2:hover {
+  border: solid blue 1px;
+}
+.choice-container {
+  height: 150px;
+  width: 350px;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.choose-text {
+  color: black;
+  -webkit-text-stroke: 1px white;
+  font-family: 'poppins';
+  margin-bottom: 150px;
+  font-size: 3rem;
+  user-select: none;
+  display: none;
+}
+.grid-table {
+  height: 600px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+}
+.top, .mid, .bot {
+  height: 200px;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px white;
+}
+#top1 {
+  border-left: 0px;
+  border-top: 0px;
+}
+#top2 {
+  border-top: 0px;
+}
+#top3 {
+  border-right: 0px;
+  border-top: 0px;
+}
+#mid1 {
+  border-left: 0px;
+}
+#mid3 {
+  border-right: 0px;
+}
+#bot1 {
+  border-left: 0px;
+  border-bottom: 0px;
+}
+#bot2 {
+  border-bottom: 0px;
+}
+#bot3 {
+  border-right: 0px;
+  border-bottom: 0px;
+}
